@@ -3,7 +3,7 @@ const router = express.Router();
 const jsonParser = express.json();
 const controllers = require('../../services/controllers');
 const isValidId = require('../../services/isValidId');
-const {register} = require('../../services/auth')
+
 
 
 
@@ -11,7 +11,7 @@ router.get('/', controllers.getAll)
 
 router.get('/:id', isValidId, controllers.getById)
 
-router.post('/', jsonParser, register, controllers.add)
+router.post('/', jsonParser, controllers.add)
 
 router.delete('/:id',isValidId, controllers.deleteById)
 
