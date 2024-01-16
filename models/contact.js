@@ -23,7 +23,7 @@ const contactSchema = new mongoose.Schema(
       default: false,
     },
   },
-  // { versionKey: false }
+  { versionKey: false }
 );
 
 module.exports = mongoose.model("Contact", contactSchema);

@@ -3,6 +3,7 @@ const router = express.Router();
 const jsonParser = express.json();
 const controllers = require('../../services/controllers');
 const isValidId = require('../../services/isValidId');
+const {register} = require('../../services/auth')
 
 
 
@@ -10,12 +11,12 @@ router.get('/', controllers.getAll)
 
 router.get('/:id', isValidId, controllers.getById)
 
-router.post('/', jsonParser, controllers.add)
+router.post('/', jsonParser, register, controllers.add)
 
 router.delete('/:id',isValidId, controllers.deleteById)
 
-router.put('/:id',isValidId, jsonParser, controllers.put)
+router.put('/:id', jsonParser ,isValidId, controllers.put)
 
-router.patch('/:id/favorite', isValidId, jsonParser, controllers.changeFavorite)
+router.patch('/:id/favorite', jsonParser, isValidId, controllers.changeFavorite)
 
 module.exports = router;
